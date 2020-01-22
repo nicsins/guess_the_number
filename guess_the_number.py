@@ -4,7 +4,6 @@ correct = 'you guessed correctly!'
 too_low = 'too low'
 too_high = 'too high'
 
-
 def configure_range():
     '''Set the high and low values for the random number'''
     return 1, 10
@@ -51,7 +50,7 @@ def main():
     secret = generate_secret(low, high)
 
     while True:
-        guess = get_guess()
+        guess = get_guess()    
         result = check_guess(guess, secret)
         print(result)
 
