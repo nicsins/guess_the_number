@@ -4,7 +4,6 @@ correct = 'you guessed correctly!'
 too_low = 'too low'
 too_high = 'too high'
 
-
 def configure_range():
     '''Set the high and low values for the random number'''
     return 1, 10
@@ -17,8 +16,23 @@ def generate_secret(low, high):
 
 def get_guess():
     '''get user's guess'''
-    return int(input('Guess the secret number? '))
+    return  posPutInt('Guess the secret number? ')
 
+ #validation loop   
+def posPutInt(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+        except ValueError:
+            print("Value must be a whole number")
+            continue
+
+        if value < 0:
+            print("Sorry, your response must not be negative.")
+            continue
+        else:
+            break
+    return value
 
 def check_guess(guess, secret):
     '''compare guess and secret, return string describing result of comparison'''
@@ -36,7 +50,7 @@ def main():
     secret = generate_secret(low, high)
 
     while True:
-        guess = get_guess()
+        guess = get_guess()    
         result = check_guess(guess, secret)
         print(result)
 
